@@ -13,16 +13,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.jetpack.googlesignin.navigation.SetupNavGraph
 import com.jetpack.googlesignin.ui.theme.GoogleSignInTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             GoogleSignInTheme {
-         val navController= rememberNavController()
-                SetupNavGraph(navController = navController)
+      NavigationSetup()
             }
         }
     }
 }
 
+@Composable
+fun NavigationSetup(){
+    val navController= rememberNavController()
+    SetupNavGraph(navController = navController)
+}
